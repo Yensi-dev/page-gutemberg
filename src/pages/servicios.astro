@@ -1,0 +1,458 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const servicios = [
+  {
+    num: '01',
+    titulo: 'Mecanizado CNC',
+    desc: 'Fresado y torneado de 3 y 5 ejes con tolerancias hasta ±0.01 mm en acero, aluminio, titanio y plásticos técnicos. Contamos con centros de mecanizado de última generación capaces de producir geometrías complejas con acabados superficiales de alta calidad.',
+    img: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1000&q=80',
+    bullets: [
+      'Fresado 3 y 5 ejes',
+      'Torneado CNC de precisión',
+      'Tolerancias hasta ±0.01 mm',
+      'Acero, aluminio, titanio y más',
+      'Acabados superficiales Ra 0.8',
+    ],
+  },
+  {
+    num: '02',
+    titulo: 'Prototipos Rápidos',
+    desc: 'Convertimos tu diseño CAD en pieza física en días. Trabajamos con archivos STEP, IGES y DXF para fabricar prototipos funcionales que permiten validar geometría, ajustes y materiales antes de comprometerse con la producción en serie.',
+    img: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=1000&q=80',
+    bullets: [
+      'Archivos STEP, IGES, DXF',
+      'Entrega en 3 a 7 días hábiles',
+      'Iteraciones rápidas',
+      'Validación de geometría y ajustes',
+      'Asesoría DFM incluida',
+    ],
+  },
+  {
+    num: '03',
+    titulo: 'Producción en Serie',
+    desc: 'Fabricamos lotes medianos y grandes con la misma consistencia dimensional que un prototipo. Cada pieza pasa por control de calidad antes de salir del taller, garantizando que el primer artículo y el último sean idénticos.',
+    img: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1000&q=80',
+    bullets: [
+      'Lotes desde 10 hasta 10,000 piezas',
+      'Control dimensional 100%',
+      'Trazabilidad de materiales',
+      'Embalaje industrial incluido',
+      'Entrega programada',
+    ],
+  },
+  {
+    num: '04',
+    titulo: 'Repuestos Industriales',
+    desc: 'Fabricamos repuestos bajo plano, muestra física o ingeniería inversa. Reducimos el tiempo de paro de tus máquinas con piezas fabricadas a medida, con materiales equivalentes o superiores al original.',
+    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&q=80',
+    bullets: [
+      'Bajo plano o muestra física',
+      'Ingeniería inversa',
+      'Servicio urgente disponible',
+      'Materiales certificados',
+      'Garantía de ajuste',
+    ],
+  },
+];
+
+const materiales = [
+  'Acero al carbono (SAE 1018, 1045, 4140)',
+  'Acero inoxidable (304, 316, 17-4PH)',
+  'Aluminio (6061, 7075, 2024)',
+  'Titanio (Grado 2 y Grado 5)',
+  'Bronce y cobre (C360, C932)',
+  'Plásticos técnicos (Nylon, Delrin, PEEK)',
+];
+---
+
+<Layout title="Servicios — Guttemberg Precision Machining">
+  <Nav />
+  <main>
+
+    <!-- Hero de página -->
+    <section class="page-hero">
+      <div class="hero-bg">
+        <img
+          src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=1800&q=80"
+          alt="Servicios de mecanizado"
+          class="hero-img"
+        />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container hero-content">
+        <span class="label"><span class="line-accent"></span>Servicios</span>
+        <h1 class="hero-title">Capacidades de<br />manufactura.</h1>
+        <p class="hero-sub">
+          Desde un prototipo hasta miles de piezas en serie,
+          entregamos precisión en cada trabajo.
+        </p>
+      </div>
+    </section>
+
+    <!-- Lista de servicios -->
+    <section class="servicios-section">
+      <div class="container">
+        <div class="servicios-list">
+          {servicios.map((s, i) => (
+            <article class={`servicio-item ${i % 2 !== 0 ? 'reverse' : ''}`}>
+              <div class="servicio-img-wrap">
+                <img src={s.img} alt={s.titulo} class="servicio-img" />
+              </div>
+              <div class="servicio-info">
+                <span class="item-num">{s.num}</span>
+                <h2 class="item-titulo">{s.titulo}</h2>
+                <p class="item-desc">{s.desc}</p>
+                <ul class="item-bullets">
+                  {s.bullets.map(b => (
+                    <li class="bullet">
+                      <span class="bullet-dot"></span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+                <a href="/contacto" class="item-cta">Solicitar cotización →</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Materiales -->
+    <section class="materiales-section">
+      <div class="container materiales-inner">
+        <div class="mat-left">
+          <span class="label"><span class="line-accent"></span>Materiales</span>
+          <h2 class="mat-title">Trabajamos con<br />los mejores materiales.</h2>
+          <p class="mat-desc">
+            Seleccionamos el material adecuado para cada aplicación.
+            Todos nuestros materiales cuentan con certificación de origen.
+          </p>
+          <a href="/contacto" class="mat-cta">Consultar disponibilidad →</a>
+        </div>
+        <div class="mat-right">
+          <ul class="mat-list">
+            {materiales.map((m, i) => (
+              <li class="mat-item">
+                <span class="mat-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="mat-name">{m}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="cta-section">
+      <div class="container cta-inner">
+        <div class="cta-text">
+          <h2 class="cta-title">¿Listo para empezar?</h2>
+          <p class="cta-sub">Envíanos tu plano o diseño y te respondemos en menos de 24 horas.</p>
+        </div>
+        <a href="/contacto" class="cta-btn">Solicitar cotización</a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+/* Hero */
+.page-hero {
+  position: relative;
+  height: 55vh;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+}
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.45) saturate(0.8);
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5, 15, 35, 0.9) 0%,
+    rgba(5, 15, 35, 0.3) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.05;
+}
+.hero-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* Servicios */
+.servicios-section {
+  padding-block: clamp(5rem, 10vh, 8rem);
+  background: #f4f6f9;
+}
+
+.servicios-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.servicio-item {
+  display: flex;
+  align-items: stretch;
+  min-height: 440px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(27, 61, 110, 0.07);
+  background: #ffffff;
+  transition: box-shadow 0.35s, transform 0.35s;
+}
+.servicio-item:hover {
+  box-shadow: 0 8px 36px rgba(27, 61, 110, 0.12);
+  transform: translateY(-3px);
+}
+.servicio-item.reverse { flex-direction: row-reverse; }
+
+.servicio-img-wrap {
+  width: 500px;
+  min-width: 500px;
+  height: 440px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.servicio-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+  filter: brightness(0.95) saturate(0.85);
+}
+.servicio-item:hover .servicio-img { transform: scale(1.03); }
+
+.servicio-info {
+  flex: 1;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+.item-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--c-accent-2);
+  text-transform: uppercase;
+}
+
+.item-titulo {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.1;
+}
+
+.item-desc {
+  font-size: 0.9rem;
+  color: var(--c-text-soft);
+  line-height: 1.78;
+  max-width: 420px;
+}
+
+.item-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.25rem;
+}
+.bullet {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--c-text-soft);
+}
+.bullet-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--c-accent-2);
+  flex-shrink: 0;
+}
+
+.item-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--c-accent-2);
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  transition: gap 0.25s, color 0.2s;
+  width: fit-content;
+}
+.item-cta:hover {
+  gap: 0.85rem;
+  color: var(--c-accent);
+}
+
+/* Materiales */
+.materiales-section {
+  padding-block: clamp(5rem, 10vh, 8rem);
+  background: #ffffff;
+  border-top: 1px solid var(--c-border);
+}
+.materiales-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 8vw, 7rem);
+  align-items: center;
+}
+.mat-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.mat-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.1;
+}
+.mat-desc {
+  font-size: 0.92rem;
+  color: var(--c-text-soft);
+  line-height: 1.75;
+  max-width: 380px;
+}
+.mat-cta {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--c-accent-2);
+  text-transform: uppercase;
+  transition: color 0.2s;
+  width: fit-content;
+}
+.mat-cta:hover { color: var(--c-accent); }
+
+.mat-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.mat-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--c-border);
+  transition: padding-left 0.25s;
+}
+.mat-item:first-child { border-top: 1px solid var(--c-border); }
+.mat-item:hover { padding-left: 0.5rem; }
+.mat-num {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--c-accent-2);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.mat-name {
+  font-size: 0.9rem;
+  color: var(--c-text);
+}
+
+/* CTA final */
+.cta-section {
+  background: #0d1f42;
+  padding-block: clamp(4rem, 8vh, 6rem);
+}
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+}
+.cta-sub {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}
+.cta-btn {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 1rem 2.4rem;
+  background: transparent;
+  color: #ffffff;
+  border: 1.5px solid rgba(255,255,255,0.45);
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: background 0.25s, border-color 0.25s;
+}
+.cta-btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.8);
+}
+
+@media (max-width: 860px) {
+  .servicio-item,
+  .servicio-item.reverse {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .servicio-img-wrap {
+    width: 100%;
+    min-width: 100%;
+    height: 260px;
+  }
+  .materiales-inner { grid-template-columns: 1fr; }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+}
+</style>

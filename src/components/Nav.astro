@@ -1,0 +1,211 @@
+---
+const links = [
+  { href: '/',          label: 'Inicio' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/nosotros',  label: 'Nosotros' },
+  { href: '/contacto',  label: 'Contacto' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="nav-wrap" id="mainNav">
+  <nav class="container nav-inner">
+
+    <!-- Logo -->
+    <a href="/" class="nav-logo">
+      <img
+        src="/images/logo.png"
+        alt="Guttemberg Precision Machining"
+        class="logo-img"
+      />
+    </a>
+
+    <!-- Links centro -->
+    <ul class="nav-links" id="navLinks">
+      {links.map(l => (
+        <li>
+          <a href={l.href} class={`nav-link ${currentPath === l.href ? 'active' : ''}`}>
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA derecha -->
+    <a href="/contacto" class="nav-cta">Cotizar</a>
+
+    <!-- Mobile toggle -->
+    <button class="nav-toggle" aria-label="Menú" id="menuBtn">
+      <span></span><span></span><span></span>
+    </button>
+
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    {links.map(l => (
+      <a href={l.href} class="mobile-link">{l.label}</a>
+    ))}
+    <a href="/contacto" class="nav-cta mobile-cta">Cotizar</a>
+  </div>
+</header>
+
+<style>
+.nav-wrap {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding-block: 1.8rem;
+  transition:
+    background 0.5s ease,
+    padding 0.5s ease,
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.nav-wrap.scrolled {
+  background: #0a1224da;
+  backdrop-filter: blur(16px);
+  padding-block: 1rem;
+  border-color: rgba(255,255,255,0.07);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+}
+
+/* Tres columnas: logo | links | cta */
+.nav-inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+.logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: height 0.5s ease;
+}
+.nav-wrap.scrolled .logo-img {
+  height: 36px;
+}
+
+/* Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 0.73rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(255,255,255,0.72);
+  padding: 0.4rem 1rem;
+  transition: color 0.2s;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.nav-link:hover { color: #ffffff; }
+.nav-link.active {
+  color: #ffffff;
+  border-bottom-color: rgba(255,255,255,0.5);
+}
+
+/* CTA */
+.nav-cta {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.6rem 1.6rem;
+  border: 1.5px solid rgba(255,255,255,0.45);
+  color: #ffffff;
+  white-space: nowrap;
+  transition: background 0.25s, border-color 0.25s;
+}
+.nav-cta:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.8);
+}
+
+/* Mobile toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: rgba(12, 28, 60, 0.98);
+  padding: 1.5rem clamp(1.5rem, 4vw, 4rem);
+  gap: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-link {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  padding: 0.4rem 0;
+  font-weight: 500;
+}
+.mobile-cta {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+  .mobile-menu.open { display: flex; }
+  .nav-inner {
+    grid-template-columns: 1fr auto;
+  }
+}
+</style>
+
+<script>
+  const nav = document.getElementById('mainNav')!;
+  const btn = document.getElementById('menuBtn')!;
+  const menu = document.getElementById('mobileMenu')!;
+
+  function handleScroll() {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+
+  btn.addEventListener('click', () => menu.classList.toggle('open'));
+
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => menu.classList.remove('open'));
+  });
+</script>
