@@ -1,0 +1,369 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const valores = [
+  {
+    num: '01',
+    titulo: 'Precisión',
+    desc: 'Cada pieza que sale de nuestro taller ha sido verificada dimensionalmente. No entregamos piezas que no cumplan con las tolerancias acordadas.',
+  },
+  {
+    num: '02',
+    titulo: 'Compromiso',
+    desc: 'Cumplimos con los tiempos de entrega porque entendemos que el tiempo de paro en la industria tiene un costo real.',
+  },
+  {
+    num: '03',
+    titulo: 'Calidad',
+    desc: 'Trabajamos con materiales certificados y equipos de última generación para garantizar resultados consistentes.',
+  },
+  {
+    num: '04',
+    titulo: 'Confianza',
+    desc: 'Construimos relaciones a largo plazo basadas en transparencia, comunicación y resultados que hablan por sí solos.',
+  },
+];
+---
+
+<Layout title="Nosotros — Guttemberg Precision Machining">
+  <Nav />
+  <main>
+
+    <!-- Hero -->
+    <section class="page-hero">
+      <div class="hero-bg">
+        <img
+          src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=1800&q=80"
+          alt="Nosotros"
+          class="hero-img"
+        />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container hero-content">
+        <span class="label"><span class="line-accent"></span>Nosotros</span>
+        <h1 class="hero-title">Más de 15 años<br />fabricando precisión.</h1>
+        <p class="hero-sub">
+          Somos un taller de mecanizado comprometido con
+          la calidad y la excelencia en cada pieza.
+        </p>
+      </div>
+    </section>
+
+    <!-- Misión -->
+    <section class="mision-section">
+      <div class="container mision-inner">
+        <div class="mision-text">
+          <span class="label"><span class="line-accent"></span>Nuestra misión</span>
+          <h2 class="block-title">Fabricamos con un<br />propósito claro.</h2>
+          <p class="block-desc">
+            Creemos que detrás de cada pieza hay una operación que
+            no puede detenerse. Por eso trabajamos con los estándares
+            más exigentes de la industria — no porque sea obligatorio,
+            sino porque es lo correcto.
+          </p>
+          <p class="block-desc">
+            Nuestro compromiso es entregar componentes de precisión
+            que funcionen perfectamente desde el primer momento,
+            con materiales certificados y tiempos de entrega que
+            respetan tus operaciones.
+          </p>
+        </div>
+        <div class="mision-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=900&q=80"
+            alt="Taller Guttemberg"
+            class="mision-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Historia -->
+    <section class="historia-section">
+      <div class="container historia-inner">
+        <div class="hist-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=900&q=80"
+            alt="Historia Guttemberg"
+            class="hist-img"
+          />
+        </div>
+        <div class="hist-text-wrap">
+          <span class="label"><span class="line-accent"></span>Nuestra historia</span>
+          <h2 class="block-title">De un taller pequeño<br />a una operación<br />de clase mundial.</h2>
+          <p class="block-desc">
+            Guttemberg Precision Machining nació hace más de 15 años
+            con una visión clara: ofrecer mecanizado de alta precisión
+            que la industria dominicana e internacional podía confiar.
+          </p>
+          <p class="block-desc">
+            Lo que comenzó con un torno y una fresadora convencional,
+            hoy es una instalación equipada con centros CNC de 3 y 5
+            ejes, tornos CNC y equipos de medición de alta exactitud.
+          </p>
+          <div class="hist-stats">
+            <div class="hstat">
+              <span class="hstat-n">15+</span>
+              <span class="hstat-l">Años</span>
+            </div>
+            <div class="hstat-div"></div>
+            <div class="hstat">
+              <span class="hstat-n">+500</span>
+              <span class="hstat-l">Piezas / mes</span>
+            </div>
+            <div class="hstat-div"></div>
+            <div class="hstat">
+              <span class="hstat-n">±0.01</span>
+              <span class="hstat-l">mm tolerancia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="valores-section">
+      <div class="container">
+        <div class="valores-header">
+          <span class="label"><span class="line-accent"></span>Nuestros valores</span>
+          <h2 class="block-title">Lo que nos define.</h2>
+        </div>
+        <div class="valores-grid">
+          {valores.map(v => (
+            <div class="valor-card">
+              <span class="valor-num">{v.num}</span>
+              <h3 class="valor-titulo">{v.titulo}</h3>
+              <p class="valor-desc">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container cta-inner">
+        <div class="cta-text">
+          <h2 class="cta-title">¿Tienes un proyecto?</h2>
+          <p class="cta-sub">Cuéntanos lo que necesitas y te respondemos en menos de 24 horas.</p>
+        </div>
+        <a href="/contacto" class="cta-btn">Contactar ahora</a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+/* Hero */
+.page-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero-bg { position: absolute; inset: 0; }
+.hero-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4) saturate(0.8);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(5,15,35,0.9) 0%, rgba(5,15,35,0.2) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding-bottom: 4rem;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700; color: #ffffff; line-height: 1.05;
+}
+.hero-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.6);
+  font-weight: 300; max-width: 480px; line-height: 1.7;
+}
+
+/* Misión */
+.mision-section {
+  padding-block: clamp(7rem, 14vh, 12rem);
+  background: #ffffff;
+}
+.mision-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(4rem, 10vw, 10rem);
+  align-items: center;
+}
+.mision-text {
+  display: flex; flex-direction: column; gap: 1.75rem;
+}
+
+/* Historia */
+.historia-section {
+  padding-block: clamp(7rem, 14vh, 12rem);
+  background: #f4f6f9;
+}
+.historia-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(4rem, 10vw, 10rem);
+  align-items: center;
+}
+.hist-text-wrap {
+  display: flex; flex-direction: column; gap: 1.75rem;
+}
+
+/* Imágenes */
+.mision-img-wrap,
+.hist-img-wrap {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 16px 48px rgba(27,61,110,0.12);
+}
+.mision-img,
+.hist-img {
+  width: 100%; height: 500px;
+  object-fit: cover;
+  filter: brightness(0.95) saturate(0.85);
+  transition: transform 0.7s ease;
+  display: block;
+}
+.mision-img-wrap:hover .mision-img,
+.hist-img-wrap:hover .hist-img {
+  transform: scale(1.03);
+}
+
+/* Texto compartido */
+.block-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.1;
+}
+.block-desc {
+  font-size: 1rem;
+  color: var(--c-text-soft);
+  line-height: 1.85;
+  max-width: 460px;
+}
+
+/* Stats historia */
+.hist-stats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--c-border);
+}
+.hstat { display: flex; flex-direction: column; gap: 0.2rem; }
+.hstat-n {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 700;
+  color: var(--c-accent); line-height: 1;
+}
+.hstat-l {
+  font-size: 0.68rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--c-muted);
+}
+.hstat-div {
+  width: 1px; height: 36px;
+  background: var(--c-border);
+}
+
+/* Valores */
+.valores-section {
+  padding-block: clamp(7rem, 14vh, 12rem);
+  background: #ffffff;
+}
+.valores-header {
+  text-align: center;
+  margin-bottom: clamp(3.5rem, 7vh, 6rem);
+  display: flex; flex-direction: column;
+  align-items: center; gap: 1rem;
+}
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.valor-card {
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  display: flex; flex-direction: column; gap: 1rem;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.valor-card:hover {
+  box-shadow: 0 8px 32px rgba(27,61,110,0.08);
+  transform: translateY(-3px);
+}
+.valor-num {
+  font-size: 0.65rem; letter-spacing: 0.15em;
+  font-weight: 700; color: var(--c-accent-2);
+}
+.valor-titulo {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 700; color: var(--c-text);
+}
+.valor-desc {
+  font-size: 0.88rem; color: var(--c-text-soft); line-height: 1.75;
+}
+
+/* CTA */
+.cta-section {
+  background: #0d1f42;
+  padding-block: clamp(4rem, 8vh, 6rem);
+}
+.cta-inner {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 2rem; flex-wrap: wrap;
+}
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700; color: #ffffff;
+}
+.cta-sub {
+  font-size: 0.92rem; color: rgba(255,255,255,0.5);
+  margin-top: 0.5rem; line-height: 1.6;
+}
+.cta-btn {
+  font-family: var(--font-body);
+  font-size: 0.78rem; letter-spacing: 0.12em;
+  text-transform: uppercase; font-weight: 700;
+  padding: 1rem 2.4rem;
+  background: transparent; color: #ffffff;
+  border: 1.5px solid rgba(255,255,255,0.45);
+  border-radius: 6px; white-space: nowrap;
+  transition: background 0.25s, border-color 0.25s;
+}
+.cta-btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.8);
+}
+
+@media (max-width: 860px) {
+  .mision-inner,
+  .historia-inner { grid-template-columns: 1fr; }
+  .hist-img-wrap { order: -1; }
+  .mision-img, .hist-img { height: 320px; }
+  .valores-grid { grid-template-columns: repeat(2, 1fr); }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 540px) {
+  .valores-grid { grid-template-columns: 1fr; }
+  .hist-stats { flex-wrap: wrap; gap: 1.5rem; }
+  .hstat-div { display: none; }
+}
+</style>

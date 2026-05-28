@@ -3,7 +3,6 @@ const links = [
   { href: '/',          label: 'Inicio' },
   { href: '/servicios', label: 'Servicios' },
   { href: '/nosotros',  label: 'Nosotros' },
-  { href: '/contacto',  label: 'Contacto' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -33,7 +32,7 @@ const currentPath = Astro.url.pathname;
     </ul>
 
     <!-- CTA derecha -->
-    <a href="/contacto" class="nav-cta">Cotizar</a>
+    <a href="/contacto" class="nav-cta">Contacto</a>
 
     <!-- Mobile toggle -->
     <button class="nav-toggle" aria-label="Menú" id="menuBtn">
@@ -66,11 +65,11 @@ const currentPath = Astro.url.pathname;
 }
 
 .nav-wrap.scrolled {
-  background: #0a1224da;
-  backdrop-filter: blur(16px);
-  padding-block: 1rem;
-  border-color: rgba(255,255,255,0.07);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+  background: #f2f2f2;
+  backdrop-filter: blur(14px);
+  padding-block: 1.1rem;
+  border-color: rgba(0,0,0,0.06);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.07);
 }
 
 /* Tres columnas: logo | links | cta */
@@ -93,7 +92,8 @@ const currentPath = Astro.url.pathname;
   transition: height 0.5s ease;
 }
 .nav-wrap.scrolled .logo-img {
-  height: 36px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(60%) saturate(800%) hue-rotate(190deg);
 }
 
 /* Links */
@@ -122,6 +122,24 @@ const currentPath = Astro.url.pathname;
   color: #ffffff;
   border-bottom-color: rgba(255,255,255,0.5);
 }
+.nav-wrap.scrolled .nav-link {
+  color: var(--c-text-soft);
+}
+.nav-wrap.scrolled .nav-link:hover {
+  color: var(--c-text);
+}
+.nav-wrap.scrolled .nav-link.active {
+  color: var(--c-accent);
+  border-bottom-color: var(--c-accent);
+}
+.nav-wrap.scrolled .nav-cta {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+.nav-wrap.scrolled .nav-cta:hover {
+  background: var(--c-accent);
+  color: #ffffff;
+}
 
 /* CTA */
 .nav-cta {
@@ -134,6 +152,7 @@ const currentPath = Astro.url.pathname;
   border: 1.5px solid rgba(255,255,255,0.45);
   color: #ffffff;
   white-space: nowrap;
+  border-radius: 50px;
   transition: background 0.25s, border-color 0.25s;
 }
 .nav-cta:hover {

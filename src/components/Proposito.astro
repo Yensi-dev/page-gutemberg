@@ -1,0 +1,195 @@
+---
+---
+
+<section class="proposito">
+  <div class="proposito-inner">
+
+    <!-- Izquierda: texto -->
+    <div class="prop-left">
+      <span class="label"><span class="line-accent"></span>Nuestro propósito</span>
+        <h2 class="prop-title">
+        Precisión que<br />impulsa la industria.
+        </h2>
+        <p class="prop-desc">
+        En Guttemberg Precision Machining sabemos que cada componente
+        que fabricamos forma parte de algo más grande — una línea de
+        producción, una infraestructura crítica, un proyecto de ingeniería
+        que no admite errores.
+        </p>
+        <p class="prop-desc">
+        Nuestra misión es entregar piezas con tolerancias exactas,
+        materiales certificados y tiempos de entrega que respetan
+        tus operaciones. No fabricamos partes. Fabricamos confianza.
+        </p>
+        <a href="/nosotros" class="prop-link">Conocer nuestra historia →</a>
+    </div>
+
+    <!-- Derecha: imagen + stats -->
+    <div class="prop-right">
+      <div class="prop-img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=1000&q=80"
+          alt="Taller Guttemberg"
+          class="prop-img"
+        />
+        <div class="prop-img-overlay"></div>
+      </div>
+
+      <div class="prop-stats">
+        <div class="stat">
+          <span class="stat-n">+500</span>
+          <span class="stat-l">Piezas / mes</span>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat">
+          <span class="stat-n">±0.01</span>
+          <span class="stat-l">mm tolerancia</span>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat">
+          <span class="stat-n">15+</span>
+          <span class="stat-l">Años de experiencia</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.proposito {
+  min-height: 100svh;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.proposito-inner {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 4rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(4rem, 10vw, 10rem);
+  align-items: center;
+  padding-block: clamp(6rem, 14vh, 12rem);
+}
+
+/* Izquierda */
+.prop-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.prop-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.08;
+}
+
+.prop-desc {
+  font-size: 1rem;
+  color: var(--c-text-soft);
+  line-height: 1.85;
+  max-width: 460px;
+}
+
+.prop-link {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--c-accent-2);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--c-accent-2);
+  padding-bottom: 2px;
+  width: fit-content;
+  transition: color 0.2s, border-color 0.2s;
+}
+.prop-link:hover {
+  color: var(--c-accent);
+  border-color: var(--c-accent);
+}
+
+/* Derecha */
+.prop-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.prop-img-wrap {
+  position: relative;
+  height: 560px;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+.prop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.9) saturate(0.85);
+  transition: transform 0.7s ease;
+}
+.prop-img-wrap:hover .prop-img {
+  transform: scale(1.03);
+}
+.prop-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(8, 20, 50, 0.35) 100%
+  );
+  border-radius: 8px 8px 0 0;
+}
+
+/* Stats */
+.prop-stats {
+  background: #0d1f42;
+  border-radius: 0 0 8px 8px;
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+.stat-n {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+.stat-l {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.stat-div {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.12);
+}
+
+@media (max-width: 860px) {
+  .proposito-inner {
+    grid-template-columns: 1fr;
+  }
+  .prop-img-wrap { height: 320px; }
+  .prop-title { font-size: clamp(2rem, 6vw, 3rem); }
+}
+</style>

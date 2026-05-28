@@ -3,26 +3,26 @@ const servicios = [
   {
     num: '01',
     titulo: 'Mecanizado CNC',
-    desc: 'Fresado y torneado de 3 y 5 ejes con tolerancias hasta ±0.01 mm en acero, aluminio, titanio y plásticos técnicos.',
-    img: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1000&q=80',
+    desc: 'Fresado y torneado de 3 y 5 ejes con tolerancias hasta ±0.01 mm.',
+    img: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&q=80',
   },
   {
     num: '02',
     titulo: 'Prototipos Rápidos',
-    desc: 'De tu diseño CAD a pieza física en días. Validamos geometría y materiales antes de la producción en serie.',
-    img: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=1000&q=80',
+    desc: 'De tu diseño CAD a pieza física en días.',
+    img: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=80',
   },
   {
     num: '03',
     titulo: 'Producción en Serie',
-    desc: 'Lotes medianos y grandes con consistencia garantizada y control dimensional en cada pieza.',
-    img: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1000&q=80',
+    desc: 'Lotes medianos y grandes con control dimensional en cada pieza.',
+    img: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80',
   },
   {
     num: '04',
     titulo: 'Repuestos Industriales',
-    desc: 'Fabricamos repuestos bajo plano o muestra para reducir el tiempo de paro de tus máquinas.',
-    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&q=80',
+    desc: 'Fabricamos repuestos bajo plano o muestra para tu maquinaria.',
+    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
   },
 ];
 ---
@@ -32,25 +32,26 @@ const servicios = [
 
     <div class="section-header">
       <span class="label"><span class="line-accent"></span>Servicios</span>
-      <h2 class="section-title">Lo que hacemos</h2>
+      <div class="header-row">
+        <h2 class="section-title">Lo que hacemos</h2>
+        <a href="/servicios" class="ver-todos">Ver todos →</a>
+      </div>
     </div>
 
-    <div class="servicios-list">
-      {servicios.map((s, i) => (
-        <article class={`servicio-item ${i % 2 !== 0 ? 'reverse' : ''}`}>
-          <div class="servicio-img-wrap">
-            <img src={s.img} alt={s.titulo} class="servicio-img" />
+    <div class="servicios-grid">
+      {servicios.map(s => (
+        <a href="/servicios" class="card">
+          <div class="card-img-wrap">
+            <img src={s.img} alt={s.titulo} class="card-img" />
+            <div class="card-overlay"></div>
+            <span class="card-num">{s.num}</span>
           </div>
-          <div class="servicio-info">
-            <span class="item-num">{s.num}</span>
-            <h3 class="item-titulo">{s.titulo}</h3>
-            <p class="item-desc">{s.desc}</p>
-            <a href="/servicios" class="item-link">
-              Ver más
-              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+          <div class="card-body">
+            <h3 class="card-titulo">{s.titulo}</h3>
+            <p class="card-desc">{s.desc}</p>
+            <span class="card-link">Ver más →</span>
           </div>
-        </article>
+        </a>
       ))}
     </div>
 
@@ -60,14 +61,20 @@ const servicios = [
 <style>
 .servicios-section {
   padding-block: clamp(5rem, 10vh, 8rem);
-  background: #f4f6f9;
+  background: #ffffff;
 }
 
 .section-header {
-  margin-bottom: clamp(3rem, 6vh, 4.5rem);
+  margin-bottom: clamp(2.5rem, 5vh, 4rem);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+.header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
 .section-title {
@@ -78,115 +85,115 @@ const servicios = [
   line-height: 1.1;
 }
 
-/* Lista */
-.servicios-list {
+.ver-todos {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--c-accent-2);
+  text-transform: uppercase;
+  transition: color 0.2s;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--c-accent-2);
+}
+.ver-todos:hover { color: var(--c-accent); }
+
+/* Grid */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+/* Card */
+.card {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  background: #f8fafc;
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(27, 61, 110, 0.1);
 }
 
-.servicio-item {
-  display: flex;
-  align-items: stretch;
-  min-height: 420px;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(27, 61, 110, 0.07);
-  background: #ffffff;
-  transition: box-shadow 0.35s, transform 0.35s;
-}
-.servicio-item:hover {
-  box-shadow: 0 8px 36px rgba(27, 61, 110, 0.12);
-  transform: translateY(-3px);
-}
-.servicio-item:last-child {
-  margin-bottom: 0;
-}
-.servicio-item.reverse {
-  flex-direction: row-reverse;
-}
-
-/* Imagen fija */
-.servicio-img-wrap {
-  width: 520px;
-  min-width: 520px;
-  height: 420px;
-  flex-shrink: 0;
+/* Imagen con overlay */
+.card-img-wrap {
+  position: relative;
+  height: 200px;
   overflow: hidden;
 }
-.servicio-img {
+.card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  transition: transform 0.7s ease;
-  filter: brightness(0.95) saturate(0.85);
+  transition: transform 0.6s ease;
+  filter: brightness(0.9) saturate(0.85);
 }
-.servicio-item:hover .servicio-img {
-  transform: scale(1.03);
+.card:hover .card-img {
+  transform: scale(1.05);
 }
-
-/* Info */
-.servicio-info {
-  flex: 1;
-  padding: clamp(2rem, 4vw, 3.5rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 20, 50, 0.15) 0%,
+    rgba(8, 20, 50, 0.55) 100%
+  );
 }
-
-.item-num {
-  font-family: var(--font-display);
-  font-size: 0.8rem;
+.card-num {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: var(--c-accent-2);
+  color: rgba(255,255,255,0.7);
 }
 
-.item-titulo {
+/* Body */
+.card-body {
+  padding: 1.4rem 1.5rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.card-titulo {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--c-text);
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
-.item-desc {
-  font-size: 0.92rem;
+.card-desc {
+  font-size: 0.83rem;
   color: var(--c-text-soft);
-  line-height: 1.78;
-  max-width: 400px;
+  line-height: 1.65;
+  flex: 1;
 }
 
-.item-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.75rem;
+.card-link {
+  font-size: 0.72rem;
   letter-spacing: 0.1em;
   font-weight: 700;
   color: var(--c-accent-2);
   text-transform: uppercase;
-  margin-top: 0.25rem;
-  transition: gap 0.25s, color 0.2s;
-  width: fit-content;
+  margin-top: 0.5rem;
+  transition: color 0.2s;
 }
-.item-link:hover {
-  gap: 0.8rem;
-  color: var(--c-accent);
-}
+.card:hover .card-link { color: var(--c-accent); }
 
-@media (max-width: 860px) {
-  .servicio-item,
-  .servicio-item.reverse {
-    flex-direction: column;
-    min-height: auto;
-  }
-  .servicio-img-wrap {
-    width: 100%;
-    min-width: 100%;
-    height: 260px;
-  }
+@media (max-width: 900px) {
+  .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .servicios-grid { grid-template-columns: 1fr; }
 }
 </style>
