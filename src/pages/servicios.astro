@@ -124,28 +124,77 @@ const materiales = [
       </div>
     </section>
 
-    <!-- Materiales -->
-    <section class="materiales-section">
-      <div class="container materiales-inner">
-        <div class="mat-left">
-          <span class="label"><span class="line-accent"></span>Materiales</span>
-          <h2 class="mat-title">Trabajamos con<br />los mejores materiales.</h2>
-          <p class="mat-desc">
-            Seleccionamos el material adecuado para cada aplicación.
-            Todos nuestros materiales cuentan con certificación de origen.
+    <!-- Medición y calidad -->
+    <section class="medicion-section">
+      <div class="container">
+
+        <div class="med-header">
+          <span class="label"><span class="line-accent"></span>Control de Calidad</span>
+          <h2 class="med-title">Medimos cada pieza<br />antes de entregarla.</h2>
+          <p class="med-intro">
+            Cada componente fabricado en nuestro taller pasa por un proceso de
+            verificación dimensional riguroso. Contamos con equipos de medición
+            de alta precisión para garantizar que cada pieza cumpla exactamente
+            con las tolerancias especificadas.
           </p>
-          <a href="/contacto" class="mat-cta">Consultar disponibilidad →</a>
         </div>
-        <div class="mat-right">
-          <ul class="mat-list">
-            {materiales.map((m, i) => (
-              <li class="mat-item">
-                <span class="mat-num">{String(i + 1).padStart(2, '0')}</span>
-                <span class="mat-name">{m}</span>
-              </li>
-            ))}
-          </ul>
+
+        <div class="med-grid">
+
+          <div class="med-card">
+            <div class="med-img-wrap">
+              <img
+                src="/images/cmm.jpg"
+                alt="CMM"
+                class="med-img"
+              />
+              <div class="med-overlay"></div>
+              <span class="med-badge">CMM</span>
+            </div>
+            <div class="med-body">
+              <h3 class="med-titulo">Máquina de Medición por Coordenadas</h3>
+              <p class="med-desc">
+                Verificamos geometrías complejas en 3D con una precisión de hasta
+                ±0.001 mm. Ideal para piezas con tolerancias críticas y perfiles
+                difíciles de medir con instrumentos convencionales.
+              </p>
+              <ul class="med-bullets">
+                <li><span class="bullet-dot"></span>Medición 3D de alta precisión</li>
+                <li><span class="bullet-dot"></span>Tolerancias hasta ±0.001 mm</li>
+                <li><span class="bullet-dot"></span>Reporte dimensional completo</li>
+                <li><span class="bullet-dot"></span>Geometrías y perfiles complejos</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="med-card">
+            <div class="med-img-wrap">
+              <img
+                src="/images/optical.jpg"
+                alt="Comparador óptico"
+                class="med-img"
+              />
+              <div class="med-overlay"></div>
+              <span class="med-badge">COMPARADOR</span>
+            </div>
+            <div class="med-body">
+              <h3 class="med-titulo">Comparador Óptico</h3>
+              <p class="med-desc">
+                Verificamos perfiles, radios y ángulos comparando la pieza contra
+                un plano de referencia amplificado. Perfecto para inspección en
+                línea y verificación de lotes en producción.
+              </p>
+              <ul class="med-bullets">
+                <li><span class="bullet-dot"></span>Verificación rápida de perfiles</li>
+                <li><span class="bullet-dot"></span>Medición de radios y ángulos</li>
+                <li><span class="bullet-dot"></span>Inspección en línea de producción</li>
+                <li><span class="bullet-dot"></span>Comparación contra plano de referencia</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
+
       </div>
     </section>
   </main>
@@ -322,72 +371,111 @@ const materiales = [
   color: var(--c-accent);
 }
 
-/* Materiales */
-.materiales-section {
+/* Medición */
+.medicion-section {
   padding-block: clamp(5rem, 10vh, 8rem);
-  background: #ffffff;
+  background: #f4f6f9;
   border-top: 1px solid var(--c-border);
 }
-.materiales-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(3rem, 8vw, 7rem);
-  align-items: center;
-}
-.mat-left {
+.med-header {
+  margin-bottom: clamp(3rem, 6vh, 5rem);
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
+  max-width: 680px;
 }
-.mat-title {
+.med-title {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 700;
   color: var(--c-text);
   line-height: 1.1;
 }
-.mat-desc {
-  font-size: 0.92rem;
+.med-intro {
+  font-size: 0.95rem;
+  color: var(--c-text-soft);
+  line-height: 1.8;
+}
+.med-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.med-card {
+  background: #ffffff;
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.med-card:hover {
+  box-shadow: 0 8px 32px rgba(27,61,110,0.1);
+  transform: translateY(-3px);
+}
+.med-img-wrap {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+}
+.med-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.88) saturate(0.8);
+  transition: transform 0.6s ease;
+}
+.med-card:hover .med-img { transform: scale(1.04); }
+.med-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(8,20,50,0.1) 0%, rgba(8,20,50,0.55) 100%);
+}
+.med-badge {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--c-accent-2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+}
+.med-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.med-titulo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.1;
+}
+.med-desc {
+  font-size: 0.88rem;
   color: var(--c-text-soft);
   line-height: 1.75;
-  max-width: 380px;
 }
-.mat-cta {
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  color: var(--c-accent-2);
-  text-transform: uppercase;
-  transition: color 0.2s;
-  width: fit-content;
-}
-.mat-cta:hover { color: var(--c-accent); }
-
-.mat-list {
+.med-bullets {
   list-style: none;
   display: flex;
   flex-direction: column;
+  gap: 0.4rem;
 }
-.mat-item {
+.med-bullets li {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--c-border);
-  transition: padding-left 0.25s;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--c-text-soft);
 }
-.mat-item:first-child { border-top: 1px solid var(--c-border); }
-.mat-item:hover { padding-left: 0.5rem; }
-.mat-num {
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  color: var(--c-accent-2);
-  font-weight: 700;
-  flex-shrink: 0;
-}
-.mat-name {
-  font-size: 0.9rem;
-  color: var(--c-text);
+
+@media (max-width: 680px) {
+  .med-grid { grid-template-columns: 1fr; }
+  .med-footer { justify-content: center; gap: 1.5rem; }
+  .mstat-div { display: none; }
 }
 
 /* CTA final */
