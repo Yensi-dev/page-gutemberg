@@ -120,12 +120,18 @@ export const translations = {
   // CONTACTO - oficinas
   'con.oficinas.label': { es: 'Presencia Global', en: 'Global Presence' },
   'con.oficinas.title': { es: 'Presencia en varios países.', en: 'Presence in multiple countries.' },
-  'con.rd.pais': { es: 'República Dominicana', en: 'Dominican Republic' },
-  'con.rd.dir': { es: 'Blvd. Turístico del Este, Cabo Engaño, Punta Cana 23000, Calle 3ra. No. 3, Proy. Caribbean Bávaro', en: 'Blvd. Turístico del Este, Cabo Engaño, Punta Cana 23000, Calle 3ra. No. 3, Caribbean Bávaro Project' },
   'con.us.pais': { es: 'Estados Unidos', en: 'United States' },
-  'con.us.dir': { es: '100 Cummings Center, Suite 321B, Beverly, MA 01905, Estados Unidos', en: '100 Cummings Center, Suite 321B, Beverly, MA 01905, United States' },
+  'con.us.linea1': { es: '100 Cummings Ctr Ste 321B', en: '100 Cummings Ctr Ste 321B' },
+  'con.us.ciudad': { es: 'Beverly, MA 01915', en: 'Beverly, MA 01915' },
+  'con.us.tel': { es: '+1 (978) 867-0707', en: '+1 (978) 867-0707' },
   'con.mx.pais': { es: 'México', en: 'Mexico' },
-  'con.mx.dir': { es: 'Educación 194 Int. 8, Tercer Piso, Burócrata, 78270 San Luis Potosí, México', en: 'Educación 194 Int. 8, Third Floor, Burócrata, 78270 San Luis Potosí, Mexico' },
+  'con.mx.linea1': { es: 'Educación 194 Int. 8, 3er Piso', en: 'Educación 194 Int. 8, 3rd Floor' },
+  'con.mx.ciudad': { es: 'Burócrata, San Luis Potosí 78270', en: 'Burócrata, San Luis Potosí 78270' },
+  'con.mx.tel': { es: '+52 (444) 892-2917', en: '+52 (444) 892-2917' },
+  'con.rd.pais': { es: 'República Dominicana', en: 'Dominican Republic' },
+  'con.rd.linea1': { es: 'Blvd. Turístico del Este, Calle 3ra. No. 3', en: 'Blvd. Turístico del Este, Calle 3ra. No. 3' },
+  'con.rd.ciudad': { es: 'Cabo Engaño, Punta Cana 23000', en: 'Cabo Engaño, Punta Cana 23000' },
+  'con.rd.tel': { es: '+1 (829) 734-5100', en: '+1 (829) 734-5100' },
 
   // CONTACTO - info
   'con.info.label': { es: 'Información', en: 'Contact Information' },
@@ -170,8 +176,15 @@ export const translations = {
   'foot.serv2': { es: 'Prototipos', en: 'Prototyping' },
   'foot.serv3': { es: 'Producción en serie', en: 'Mass Production' },
   'foot.serv4': { es: 'Repuestos Industriales', en: 'Industrial Spare Parts' },
-  'foot.contacto': { es: 'Contacto', en: 'Contact Us' },
-  'foot.ubicacion': { es: 'Santo Domingo,<br />República Dominicana', en: 'Santo Domingo,<br />Dominican Republic' },
+  'foot.contacto': { es: 'Ubicaciones', en: 'Locations' },
+
+  'foot.loc.us': { es: 'Estados Unidos', en: 'United States' },
+  'foot.loc.us.city': { es: 'Beverly, MA 01915', en: 'Beverly, MA 01915' },
+  'foot.loc.mx': { es: 'México', en: 'Mexico' },
+  'foot.loc.mx.city': { es: 'San Luis Potosí, 78270', en: 'San Luis Potosí, 78270' },
+  'foot.loc.do': { es: 'República Dominicana', en: 'Dominican Republic' },
+  'foot.loc.do.city': { es: 'Punta Cana 23000', en: 'Punta Cana 23000' },
+
   'foot.copyright': { es: 'Todos los derechos reservados.', en: 'All rights reserved.' },
   'foot.credits': { es: 'Diseño web por', en: 'Website design by' },
 };

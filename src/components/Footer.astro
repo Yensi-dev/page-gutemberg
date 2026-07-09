@@ -5,6 +5,12 @@ const links = [
   { href: '/nosotros',  label: 'Nosotros',  key: 'nav.nosotros' },
   { href: '/contacto',  label: 'Contacto',  key: 'nav.contacto' },
 ];
+
+const locations = [
+  { country: 'Estados Unidos',        key: 'foot.loc.us',  cityKey: 'foot.loc.us.city',  city: 'Beverly, MA 01915',           phone: '+1 (978) 867-0707' },
+  { country: 'México',                key: 'foot.loc.mx',  cityKey: 'foot.loc.mx.city',  city: 'San Luis Potosí, 78270',       phone: '+52 (444) 892-2917' },
+  { country: 'República Dominicana',  key: 'foot.loc.do',  cityKey: 'foot.loc.do.city',  city: 'Punta Cana 23000',             phone: '+1 (829) 734-5100' },
+];
 ---
 
 <footer class="footer">
@@ -56,29 +62,30 @@ const links = [
       </ul>
     </div>
 
-    <!-- Columna 4: Contacto -->
+    <!-- Columna 4: Ubicaciones -->
     <div class="col col-contact">
-      <h4 class="col-title" data-i18n="foot.contacto">Contacto</h4>
-      <ul class="contact-list">
-        <li>
-          <span class="contact-icon">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </span>
-          <span data-i18n-html data-i18n="foot.ubicacion">Santo Domingo,<br />República Dominicana</span>
-        </li>
-        <li>
-          <span class="contact-icon">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.29 6.29l1.94-1.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </span>
-          <span>(829) 734-5100</span>
-        </li>
-        <li>
-          <span class="contact-icon">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </span>
-          <span>info@guttembergusa.com</span>
-        </li>
+      <h4 class="col-title" data-i18n="foot.contacto">Ubicaciones</h4>
+      <ul class="location-list">
+        {locations.map(loc => (
+          <li class="location-item">
+            <span class="contact-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div class="location-text">
+              <span class="location-country" data-i18n={loc.key}>{loc.country}</span>
+              <span class="location-city" data-i18n={loc.cityKey}>{loc.city}</span>
+              <a href={`tel:${loc.phone.replace(/[^+\d]/g, '')}`} class="location-phone">{loc.phone}</a>
+            </div>
+          </li>
+        ))}
       </ul>
+
+      <div class="contact-general">
+        <a href="mailto:info@guttembergusa.com" class="footer-link contact-line">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>info@guttembergusa.com</span>
+        </a>
+      </div>
     </div>
 
   </div>
@@ -101,7 +108,7 @@ const links = [
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
+  grid-template-columns: 1.3fr 0.8fr 0.8fr 1.4fr;
   gap: clamp(2rem, 5vw, 4rem);
   padding-bottom: clamp(3rem, 6vh, 5rem);
 }
@@ -174,25 +181,66 @@ const links = [
   padding-left: 4px;
 }
 
-/* Contacto */
-.contact-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+/* Ubicaciones */
+.location-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 1rem;
+  margin-bottom: 1.4rem;
 }
-.contact-list li {
+.location-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.6;
+  gap: 0.6rem;
+  min-width: 160px; /* nuevo: da más espacio al título */
+}
+.location-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.location-country {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.95); /* antes 0.75 */
+}
+.location-city {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.65); /* antes 0.4 */
 }
 .contact-icon {
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.55); /* antes 0.3 */
   margin-top: 2px;
   flex-shrink: 0;
+}
+
+.location-phone {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.65);
+  margin-top: 0.15rem;
+  transition: color 0.2s;
+}
+.location-phone:hover {
+  color: #ffffff;
+}
+
+/* Contacto general (tel/email) */
+.contact-general {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.4rem; /* separación sin línea */
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.82rem;
+}
+.contact-line svg {
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.3);
 }
 
 /* Barra inferior */
