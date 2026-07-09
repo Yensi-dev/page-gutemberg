@@ -1,17 +1,14 @@
 ---
 import '../styles/global.css';
-
 interface Props {
   title?: string;
   description?: string;
 }
-
 const {
-  title = 'Gutemberg — Taller de Mecanizado de Precisión',
+  title = 'Guttemberg SRL | Home',
   description = 'Fabricación de piezas de precisión y mecanizado industrial. Calidad certificada, entregas puntuales.',
 } = Astro.props;
 ---
-
 <!doctype html>
 <html lang="es">
   <head>
@@ -23,5 +20,9 @@ const {
   </head>
   <body>
     <slot />
+    <script>
+      import { initLang } from '../scripts/i18n.js';
+      initLang();
+    </script>
   </body>
 </html>

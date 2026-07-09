@@ -6,54 +6,58 @@ import Footer from '../components/Footer.astro';
 const servicios = [
   {
     num: '01',
+    key: 's1',
     titulo: 'Mecanizado CNC',
     desc: 'Fresado y torneado de 3 y 5 ejes con tolerancias hasta ±0.01 mm en acero, aluminio, titanio y plásticos técnicos. Contamos con centros de mecanizado de última generación capaces de producir geometrías complejas con acabados superficiales de alta calidad.',
     img: '/images/machine.jpg',
     bullets: [
-      'Fresado 3 y 5 ejes',
-      'Torneado CNC de precisión',
-      'Tolerancias hasta ±0.01 mm',
-      'Acero, aluminio, titanio y más',
-      'Acabados superficiales Ra 0.8',
+      { key: 's1.b1', text: 'Fresado 3 y 5 ejes' },
+      { key: 's1.b2', text: 'Torneado CNC de precisión' },
+      { key: 's1.b3', text: 'Tolerancias hasta ±0.01 mm' },
+      { key: 's1.b4', text: 'Acero, aluminio, titanio y más' },
+      { key: 's1.b5', text: 'Acabados superficiales Ra 0.8' },
     ],
   },
   {
     num: '02',
+    key: 's2',
     titulo: 'Prototipos Rápidos',
     desc: 'Convertimos tu diseño CAD en pieza física en días. Trabajamos con archivos STEP, IGES y DXF para fabricar prototipos funcionales que permiten validar geometría, ajustes y materiales antes de comprometerse con la producción en serie.',
     img: '/images/prototype.jpg',
     bullets: [
-      'Archivos STEP, IGES, DXF',
-      'Entrega en 3 a 7 días hábiles',
-      'Iteraciones rápidas',
-      'Validación de geometría y ajustes',
-      'Asesoría DFM incluida',
+      { key: 's2.b1', text: 'Archivos STEP, IGES, DXF' },
+      { key: 's2.b2', text: 'Entrega en 3 a 7 días hábiles' },
+      { key: 's2.b3', text: 'Iteraciones rápidas' },
+      { key: 's2.b4', text: 'Validación de geometría y ajustes' },
+      { key: 's2.b5', text: 'Asesoría DFM incluida' },
     ],
   },
   {
     num: '03',
+    key: 's3',
     titulo: 'Producción en Serie',
     desc: 'Fabricamos lotes medianos y grandes con la misma consistencia dimensional que un prototipo. Cada pieza pasa por control de calidad antes de salir del taller, garantizando que el primer artículo y el último sean idénticos.',
     img: '/images/production.jpg',
     bullets: [
-      'Lotes desde 10 hasta 10,000 piezas',
-      'Control dimensional 100%',
-      'Trazabilidad de materiales',
-      'Embalaje industrial incluido',
-      'Entrega programada',
+      { key: 's3.b1', text: 'Lotes desde 10 hasta 10,000 piezas' },
+      { key: 's3.b2', text: 'Control dimensional 100%' },
+      { key: 's3.b3', text: 'Trazabilidad de materiales' },
+      { key: 's3.b4', text: 'Embalaje industrial incluido' },
+      { key: 's3.b5', text: 'Entrega programada' },
     ],
   },
   {
     num: '04',
+    key: 's4',
     titulo: 'Repuestos Industriales',
     desc: 'Fabricamos repuestos bajo plano, muestra física o ingeniería inversa. Reducimos el tiempo de paro de tus máquinas con piezas fabricadas a medida, con materiales equivalentes o superiores al original.',
     img: '/images/repuestos.jpg',
     bullets: [
-      'Bajo plano o muestra física',
-      'Ingeniería inversa',
-      'Servicio urgente disponible',
-      'Materiales certificados',
-      'Garantía de ajuste',
+      { key: 's4.b1', text: 'Bajo plano o muestra física' },
+      { key: 's4.b2', text: 'Ingeniería inversa' },
+      { key: 's4.b3', text: 'Servicio urgente disponible' },
+      { key: 's4.b4', text: 'Materiales certificados' },
+      { key: 's4.b5', text: 'Garantía de ajuste' },
     ],
   },
 ];
@@ -68,7 +72,7 @@ const materiales = [
 ];
 ---
 
-<Layout title="Servicios — Guttemberg Precision Machining">
+<Layout title="Guttemberg SRL | Servicios">
   <Nav />
   <main>
 
@@ -86,9 +90,9 @@ const materiales = [
         <div class="hero-overlay"></div>
       </div>
       <div class="container hero-content">
-        <span class="label"><span class="line-accent"></span>Servicios</span>
-        <h1 class="hero-title">Capacidades de<br />manufactura.</h1>
-        <p class="hero-sub">
+        <span class="label"><span class="line-accent"></span><span data-i18n="serv.label">Servicios</span></span>
+        <h1 class="hero-title" data-i18n-html data-i18n="serv.title">Capacidades de<br />manufactura.</h1>
+        <p class="hero-sub" data-i18n="serv.sub">
           Desde un prototipo hasta miles de piezas en serie,
           entregamos precisión en cada trabajo.
         </p>
@@ -106,17 +110,17 @@ const materiales = [
               </div>
               <div class="servicio-info">
                 <span class="item-num">{s.num}</span>
-                <h2 class="item-titulo">{s.titulo}</h2>
-                <p class="item-desc">{s.desc}</p>
+                <h2 class="item-titulo" data-i18n={`${s.key}.titulo`}>{s.titulo}</h2>
+                <p class="item-desc" data-i18n={`${s.key}.desc`}>{s.desc}</p>
                 <ul class="item-bullets">
                   {s.bullets.map(b => (
                     <li class="bullet">
                       <span class="bullet-dot"></span>
-                      {b}
+                      <span data-i18n={b.key}>{b.text}</span>
                     </li>
                   ))}
                 </ul>
-                <a href="/contacto" class="item-cta">Solicitar cotización →</a>
+                <a href="/contacto" class="item-cta" data-i18n="s.cta">Solicitar cotización →</a>
               </div>
             </article>
           ))}
@@ -129,9 +133,9 @@ const materiales = [
       <div class="container">
 
         <div class="med-header">
-          <span class="label"><span class="line-accent"></span>Control de Calidad</span>
-          <h2 class="med-title">Medimos cada pieza<br />antes de entregarla.</h2>
-          <p class="med-intro">
+          <span class="label"><span class="line-accent"></span><span data-i18n="med.label">Control de Calidad</span></span>
+          <h2 class="med-title" data-i18n-html data-i18n="med.title">Medimos cada pieza<br />antes de entregarla.</h2>
+          <p class="med-intro" data-i18n="med.intro">
             Cada componente fabricado en nuestro taller pasa por un proceso de
             verificación dimensional riguroso. Contamos con equipos de medición
             de alta precisión para garantizar que cada pieza cumpla exactamente
@@ -149,20 +153,20 @@ const materiales = [
                 class="med-img"
               />
               <div class="med-overlay"></div>
-              <span class="med-badge">CMM</span>
+              <span class="med-badge" data-i18n="med1.badge">CMM</span>
             </div>
             <div class="med-body">
-              <h3 class="med-titulo">Máquina de Medición por Coordenadas</h3>
-              <p class="med-desc">
+              <h3 class="med-titulo" data-i18n="med1.titulo">Máquina de Medición por Coordenadas</h3>
+              <p class="med-desc" data-i18n="med1.desc">
                 Verificamos geometrías complejas en 3D con una precisión de hasta
                 ±0.001 mm. Ideal para piezas con tolerancias críticas y perfiles
                 difíciles de medir con instrumentos convencionales.
               </p>
               <ul class="med-bullets">
-                <li><span class="bullet-dot"></span>Medición 3D de alta precisión</li>
-                <li><span class="bullet-dot"></span>Tolerancias hasta ±0.001 mm</li>
-                <li><span class="bullet-dot"></span>Reporte dimensional completo</li>
-                <li><span class="bullet-dot"></span>Geometrías y perfiles complejos</li>
+                <li><span class="bullet-dot"></span><span data-i18n="med1.b1">Medición 3D de alta precisión</span></li>
+                <li><span class="bullet-dot"></span><span data-i18n="med1.b2">Tolerancias hasta ±0.001 mm</span></li>
+                <li><span class="bullet-dot"></span><span data-i18n="med1.b3">Reporte dimensional completo</span></li>
+                <li><span class="bullet-dot"></span><span data-i18n="med1.b4">Geometrías y perfiles complejos</span></li>
               </ul>
             </div>
           </div>
@@ -175,20 +179,20 @@ const materiales = [
                 class="med-img"
               />
               <div class="med-overlay"></div>
-              <span class="med-badge">COMPARADOR</span>
+              <span class="med-badge" data-i18n="med2.badge">COMPARADOR</span>
             </div>
             <div class="med-body">
-              <h3 class="med-titulo">Comparador Óptico</h3>
-              <p class="med-desc">
+              <h3 class="med-titulo" data-i18n="med2.titulo">Comparador Óptico</h3>
+              <p class="med-desc" data-i18n="med2.desc">
                 Verificamos perfiles, radios y ángulos comparando la pieza contra
                 un plano de referencia amplificado. Perfecto para inspección en
                 línea y verificación de lotes en producción.
               </p>
               <ul class="med-bullets">
-                <li><span class="bullet-dot"></span>Verificación rápida de perfiles</li>
-                <li><span class="bullet-dot"></span>Medición de radios y ángulos</li>
-                <li><span class="bullet-dot"></span>Inspección en línea de producción</li>
-                <li><span class="bullet-dot"></span>Comparación contra plano de referencia</li>
+                <li><span class="bullet-dot"></span><span data-i18n="med2.b1">Verificación rápida de perfiles</span></li>
+                <li><span class="bullet-dot"></span><span data-i18n="med2.b2">Medición de radios y ángulos</span></li>
+                <li><span class="bullet-dot"></span><span data-i18n="med2.b3">Inspección en línea de producción</span></li>
+                <li><span class="bullet-dot"></span><span data-i18n="med2.b4">Comparación contra plano de referencia</span></li>
               </ul>
             </div>
           </div>

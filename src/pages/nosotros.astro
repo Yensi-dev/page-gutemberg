@@ -6,28 +6,32 @@ import Footer from '../components/Footer.astro';
 const valores = [
   {
     num: '01',
+    key: 'val1',
     titulo: 'Precisión',
     desc: 'Cada pieza que sale de nuestro taller ha sido verificada dimensionalmente. No entregamos piezas que no cumplan con las tolerancias acordadas.',
   },
   {
     num: '02',
+    key: 'val2',
     titulo: 'Compromiso',
     desc: 'Cumplimos con los tiempos de entrega porque entendemos que el tiempo de paro en la industria tiene un costo real.',
   },
   {
     num: '03',
+    key: 'val3',
     titulo: 'Calidad',
     desc: 'Trabajamos con materiales certificados y equipos de última generación para garantizar resultados consistentes.',
   },
   {
     num: '04',
+    key: 'val4',
     titulo: 'Confianza',
     desc: 'Construimos relaciones a largo plazo basadas en transparencia, comunicación y resultados que hablan por sí solos.',
   },
 ];
 ---
 
-<Layout title="Nosotros — Guttemberg Precision Machining">
+<Layout title="Guttemberg SRL | Nosotros">
   <Nav />
   <main>
 
@@ -44,9 +48,9 @@ const valores = [
         <div class="hero-overlay"></div>
       </div>
       <div class="container hero-content">
-        <span class="label"><span class="line-accent"></span>Nosotros</span>
-        <h1 class="hero-title">Más de 15 años<br />fabricando precisión.</h1>
-        <p class="hero-sub">
+        <span class="label"><span class="line-accent"></span><span data-i18n="nos.label">Nosotros</span></span>
+        <h1 class="hero-title" data-i18n-html data-i18n="nos.title">Más de 15 años<br />fabricando precisión.</h1>
+        <p class="hero-sub" data-i18n="nos.sub">
           Somos un taller de mecanizado comprometido con
           la calidad y la excelencia en cada pieza.
         </p>
@@ -57,15 +61,15 @@ const valores = [
     <section class="mision-section">
       <div class="container mision-inner">
         <div class="mision-text">
-          <span class="label"><span class="line-accent"></span>Nuestra misión</span>
-          <h2 class="block-title">Fabricamos con un<br />propósito claro.</h2>
-          <p class="block-desc">
+          <span class="label"><span class="line-accent"></span><span data-i18n="mis.label">Nuestra misión</span></span>
+          <h2 class="block-title" data-i18n-html data-i18n="mis.title">Fabricamos con un<br />propósito claro.</h2>
+          <p class="block-desc" data-i18n="mis.desc1">
             Creemos que detrás de cada pieza hay una operación que
             no puede detenerse. Por eso trabajamos con los estándares
             más exigentes de la industria — no porque sea obligatorio,
             sino porque es lo correcto.
           </p>
-          <p class="block-desc">
+          <p class="block-desc" data-i18n="mis.desc2">
             Nuestro compromiso es entregar componentes de precisión
             que funcionen perfectamente desde el primer momento,
             con materiales certificados y tiempos de entrega que
@@ -93,14 +97,14 @@ const valores = [
           />
         </div>
         <div class="hist-text-wrap">
-          <span class="label"><span class="line-accent"></span>Nuestra historia</span>
-          <h2 class="block-title">De un taller pequeño<br />a una operación<br />de clase mundial.</h2>
-          <p class="block-desc">
+          <span class="label"><span class="line-accent"></span><span data-i18n="hist.label">Nuestra historia</span></span>
+          <h2 class="block-title" data-i18n-html data-i18n="hist.title">De un taller pequeño<br />a una operación<br />de clase mundial.</h2>
+          <p class="block-desc" data-i18n="hist.desc1">
             Guttemberg Precision Machining nació hace más de 15 años
             con una visión clara: ofrecer mecanizado de alta precisión
             que la industria dominicana e internacional podía confiar.
           </p>
-          <p class="block-desc">
+          <p class="block-desc" data-i18n="hist.desc2">
             Lo que comenzó con un torno y una fresadora convencional,
             hoy es una instalación equipada con centros CNC de 3 y 5
             ejes, tornos CNC y equipos de medición de alta exactitud.
@@ -108,17 +112,17 @@ const valores = [
           <div class="hist-stats">
             <div class="hstat">
               <span class="hstat-n">15+</span>
-              <span class="hstat-l">Años</span>
+              <span class="hstat-l" data-i18n="hist.stat1.l">Años</span>
             </div>
             <div class="hstat-div"></div>
             <div class="hstat">
               <span class="hstat-n">+500</span>
-              <span class="hstat-l">Piezas / mes</span>
+              <span class="hstat-l" data-i18n="hist.stat2.l">Piezas / mes</span>
             </div>
             <div class="hstat-div"></div>
             <div class="hstat">
               <span class="hstat-n">±0.01</span>
-              <span class="hstat-l">mm tolerancia</span>
+              <span class="hstat-l" data-i18n="hist.stat3.l">mm tolerancia</span>
             </div>
           </div>
         </div>
@@ -129,15 +133,15 @@ const valores = [
     <section class="valores-section">
       <div class="container">
         <div class="valores-header">
-          <span class="label"><span class="line-accent"></span>Nuestros valores</span>
-          <h2 class="block-title">Lo que nos define.</h2>
+          <span class="label"><span class="line-accent"></span><span data-i18n="val.label">Nuestros valores</span></span>
+          <h2 class="block-title" data-i18n="val.title">Lo que nos define.</h2>
         </div>
         <div class="valores-grid">
           {valores.map(v => (
             <div class="valor-card">
               <span class="valor-num">{v.num}</span>
-              <h3 class="valor-titulo">{v.titulo}</h3>
-              <p class="valor-desc">{v.desc}</p>
+              <h3 class="valor-titulo" data-i18n={`${v.key}.titulo`}>{v.titulo}</h3>
+              <p class="valor-desc" data-i18n={`${v.key}.desc`}>{v.desc}</p>
             </div>
           ))}
         </div>
